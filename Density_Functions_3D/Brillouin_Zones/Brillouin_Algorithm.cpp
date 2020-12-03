@@ -12,6 +12,8 @@ void Brillouin_Algorithm ( Framework_Parameters const& f_p, Input& input, Experi
     
     for (int counter = 0; counter < input.base_pts.size(); ++counter) // Looping over base points.
     {
+        cout << counter << endl;
+        
         clock_t check_point_1 = clock(); // Starts the clock that measures the time of Brillouin zone computations.
         
         vector<double> max_radii; // Contains the maximum radius of each zone from the base point.

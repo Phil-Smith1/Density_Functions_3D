@@ -19,6 +19,15 @@ void Combine_And_Write_Extracted_Data ( Framework_Parameters const& f_p, Input c
         }
     }
     
+    // Keeping "at least 1"
+    
+    vector<double> at_least_1( results.size() );
+    
+    for (int counter = 0; counter < results.size(); ++counter)
+    {
+        at_least_1[counter] = results[counter][1];
+    }
+    
     // Calculating density functions: "at least" -> "exact".
     
     for (int counter_1 = 0; counter_1 < results.size(); ++counter_1)
@@ -76,12 +85,14 @@ void Combine_And_Write_Extracted_Data ( Framework_Parameters const& f_p, Input c
             
             else
             {
-                results[counter_1][1] = 1;
+                /*results[counter_1][1] = 1;
                 
                 for (int counter_2 = 2; counter_2 < input.zone_limit + 1; ++counter_2)
                 {
                     results[counter_1][1] -= results[counter_1][counter_2];
-                }
+                }*/
+                
+                results[counter_1][1] = 1 - at_least_1[counter_1];
             }
             
             if (results[counter_1][1] < tiny_num * 1e4) df0_is_0 = true;
