@@ -63,6 +63,12 @@ void Plot_Graph_File_Names ( Framework_Parameters const& f_p, Input const& input
         }
     }
     
+    else if (f_p.T2L)
+    {
+        data_file_1 = "Data/T2L/" + to_string( input.rep_iter ) + ".txt";
+        graph_file = "Graphs/T2L/" + to_string( input.rep_iter ) + ".pdf";
+    }
+    
     else if (input.FCC)
     {
         data_file_1 = "Data/Custom/FCC.txt";

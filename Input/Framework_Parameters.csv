@@ -1,6 +1,7 @@
 input_dir,/Users/philsmith/Documents/Work/Xcode Projects/Density_Functions_3D/Input/
 output_dir,/Users/philsmith/Documents/Work/Xcode Projects/Density_Functions_3D/Output/
 T2_dir,/Users/philsmith/Documents/Work/Xcode Projects/T2_Dataset/
+T2L_dir,/Users/philsmith/Documents/Work/Xcode Projects/T2L_Modified/
 input_file,Input.csv
 experiment_file,Experiment.csv
 v_file,v_file.csv
@@ -8,8 +9,8 @@ replot,0
 extract_data,1
 sample_rate,10
 densigram,0
-plot_graph,1
-zero_density,1
+plot_graph,0
+zero_density,0
 title,0
 title_str,Density_Functions
 extract_experiment_data,0
@@ -21,7 +22,8 @@ vary_m,0
 uplusv,0
 superimposed,0
 use_threads,0
-T2,1
+T2,0
+T2L,1
 type_of_experiment,Molecule_Centres
 experimental_T2,0
 experimental_T2_label,e

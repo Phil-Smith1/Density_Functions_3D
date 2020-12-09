@@ -44,6 +44,11 @@ void Data_File_Name ( Framework_Parameters const& f_p, Input const& input, int i
         }
     }
     
+    else if (f_p.T2L)
+    {
+        data_file = f_p.output_dir + "Data/T2L/" + to_string( index ) + ".txt";
+    }
+    
     else if (input.FCC) data_file = f_p.output_dir + "Data/Custom/FCC.txt";
     
     else if (input.HCP) data_file = f_p.output_dir + "Data/Custom/HCP.txt";

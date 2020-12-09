@@ -55,6 +55,16 @@ bool Read_Framework_Parameters ( Framework_Parameters& f_p )
     getline( stream, val, ',' );
     getline( stream, val, ',' );
     
+    f_p.T2L_dir = val;
+    
+    getline( ifs, line_data );
+    
+    stream.clear();
+    stream << line_data;
+    
+    getline( stream, val, ',' );
+    getline( stream, val, ',' );
+    
     f_p.input_file = val;
     
     getline( ifs, line_data );
@@ -256,6 +266,16 @@ bool Read_Framework_Parameters ( Framework_Parameters& f_p )
     getline( stream, val, ',' );
     
     f_p.T2 = stoi( val );
+    
+    getline( ifs, line_data );
+    
+    stream.clear();
+    stream << line_data;
+    
+    getline( stream, val, ',' );
+    getline( stream, val, ',' );
+    
+    f_p.T2L = stoi( val );
     
     getline( ifs, line_data );
     
