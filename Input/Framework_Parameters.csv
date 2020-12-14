@@ -1,13 +1,13 @@
 input_dir,/Users/philsmith/Documents/Work/Xcode Projects/Density_Functions_3D/Input/
 output_dir,/Users/philsmith/Documents/Work/Xcode Projects/Density_Functions_3D/Output/
 T2_dir,/Users/philsmith/Documents/Work/Xcode Projects/T2_Dataset/
-T2L_dir,/Users/philsmith/Documents/Work/Xcode Projects/T2L_Modified/
+T2L_dir,/Users/philsmith/Documents/Work/Xcode Projects/T2L/T2L_Modified_Csv/
 input_file,Input.csv
 experiment_file,Experiment.csv
 v_file,v_file.csv
 replot,0
 extract_data,1
-sample_rate,10
+sample_rate,5
 densigram,0
 plot_graph,0
 zero_density,0

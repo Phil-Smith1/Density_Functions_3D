@@ -778,22 +778,23 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/gmp/6.1.2_2/include,
-					/usr/local/Cellar/boost/1.69.0/include,
-					/usr/local/Cellar/cgal/5.0.1/include,
+					/usr/local/Cellar/gmp/6.2.1/include,
+					/usr/local/Cellar/boost/1.74.0/include,
+					/usr/local/Cellar/cgal/5.1.1/include,
 					/usr/local/Cellar/gemmi/include,
 					/usr/local/Cellar/gemmi/third_party,
-					/usr/local/Cellar/mpfr/4.0.2/include,
+					/usr/local/Cellar/mpfr/4.1.0/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/gmp/6.1.2_2/lib,
-					/usr/local/Cellar/boost/1.69.0/lib,
-					/usr/local/Cellar/cgal/5.0.1/lib,
-					/usr/local/Cellar/mpfr/4.0.2/lib,
+					/usr/local/Cellar/gmp/6.2.1/lib,
+					/usr/local/Cellar/boost/1.74.0/lib,
+					/usr/local/Cellar/cgal/5.1.1/lib,
+					/usr/local/Cellar/mpfr/4.1.0/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-lmpfr",
 					"-lboost_iostreams",
+					"-lgmp",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -806,22 +807,23 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = (
-					/usr/local/Cellar/gmp/6.1.2_2/include,
-					/usr/local/Cellar/boost/1.69.0/include,
-					/usr/local/Cellar/cgal/5.0.1/include,
+					/usr/local/Cellar/gmp/6.2.1/include,
+					/usr/local/Cellar/boost/1.74.0/include,
+					/usr/local/Cellar/cgal/5.1.1/include,
 					/usr/local/Cellar/gemmi/include,
 					/usr/local/Cellar/gemmi/third_party,
-					/usr/local/Cellar/mpfr/4.0.2/include,
+					/usr/local/Cellar/mpfr/4.1.0/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
-					/usr/local/Cellar/gmp/6.1.2_2/lib,
-					/usr/local/Cellar/boost/1.69.0/lib,
-					/usr/local/Cellar/cgal/5.0.1/lib,
-					/usr/local/Cellar/mpfr/4.0.2/lib,
+					/usr/local/Cellar/gmp/6.2.1/lib,
+					/usr/local/Cellar/boost/1.74.0/lib,
+					/usr/local/Cellar/cgal/5.1.1/lib,
+					/usr/local/Cellar/mpfr/4.1.0/lib,
 				);
 				OTHER_LDFLAGS = (
 					"-lmpfr",
 					"-lboost_iostreams",
+					"-lgmp",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
