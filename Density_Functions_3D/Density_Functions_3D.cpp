@@ -1,6 +1,7 @@
 #include <gemmi/cif.hpp>
 
 #include "Read_Framework_Parameters.h"
+#include "Read_T2L_File_Names.h"
 #include "Read_Experiment.h"
 #include "Read_Input.h"
 #include "Initialise_Lattice.h"
@@ -24,6 +25,10 @@ int main( int, char*[] )
     Framework_Parameters f_p; // Class containing details of what functions to run etc.
     
     if (!Read_Framework_Parameters( f_p )) return 1; // Reading the framework parameters.
+    
+    vector<string> T2L_labels;
+    
+    if (f_p.T2L) Read_T2L_File_Names( f_p, T2L_labels );
     
     Experiment e; // Class containing information about the type of experiment to be performed.
     
@@ -81,6 +86,7 @@ int main( int, char*[] )
                         cout << "Repetition " << rep_iter << ":" << endl << endl;
                         
                         input.rep_iter = rep_iter;
+                        if (f_p.T2L) input.T2L_label = T2L_labels[rep_iter - 1];
                         
                         Add_Random_Pts( input ); // Adding input.random_pts number of random points.
                         

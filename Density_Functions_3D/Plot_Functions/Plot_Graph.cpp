@@ -31,6 +31,8 @@ void Plot_Graph ( Framework_Parameters const& f_p, Input& input )
     
     gp << "set terminal pdfcairo size " + to_string( terminal_size_x ) + ", " + to_string( terminal_size_y ) + "\n";
     
+    gp << "set datafile separator ','\n";
+    
     gp << "set border " + to_string( border ) + "\n";
     gp << "set grid\n";
     gp << "set bmargin " + to_string( bmargin ) + "\n";

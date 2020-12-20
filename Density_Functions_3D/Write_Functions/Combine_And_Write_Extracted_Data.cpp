@@ -114,7 +114,7 @@ void Combine_And_Write_Extracted_Data ( Framework_Parameters const& f_p, Input c
     
     for (int counter = 0; counter < z_l; ++counter)
     {
-        ofs << " " << results[0][counter + 1];
+        ofs << "," << results[0][counter + 1];
     }
     
     for (int counter_1 = 1; counter_1 < results.size(); ++counter_1)
@@ -125,7 +125,7 @@ void Combine_And_Write_Extracted_Data ( Framework_Parameters const& f_p, Input c
         
         for (int counter_2 = 0; counter_2 < z_l; ++counter_2)
         {
-            ofs << " " << results[counter_1][counter_2 + 1];
+            ofs << "," << results[counter_1][counter_2 + 1];
         }
     }
     

@@ -8,7 +8,7 @@ void Initialise_Pt_Cloud_T2L ( Framework_Parameters const& f_p, Input& input, in
 {
     input.base_pts.clear();
     
-    string filename = "T2_" + to_string( index ) + ".txt";
+    string filename = "job_0" + input.T2L_label + ".csv";
     string file_path = f_p.T2L_dir + filename;
     
     ifstream ifs( file_path );
@@ -17,38 +17,44 @@ void Initialise_Pt_Cloud_T2L ( Framework_Parameters const& f_p, Input& input, in
     
     getline( ifs, line_data );
     
-    double a, b, c;
+    string a, b, c;
     stringstream stream;
     
     stream << line_data;
     
-    stream >> a >> b >> c;
+    getline( stream, a, ',' );
+    getline( stream, b, ',' );
+    getline( stream, c, ',' );
     
-    input.matrix[0][0] = a;
-    input.matrix[1][0] = b;
-    input.matrix[2][0] = c;
-    
-    getline( ifs, line_data );
-    
-    stream.clear();
-    stream << line_data;
-    
-    stream >> a >> b >> c;
-    
-    input.matrix[0][1] = a;
-    input.matrix[1][1] = b;
-    input.matrix[2][1] = c;
+    input.matrix[0][0] = stod( a );
+    input.matrix[1][0] = stod( b );
+    input.matrix[2][0] = stod( c );
     
     getline( ifs, line_data );
     
     stream.clear();
     stream << line_data;
     
-    stream >> a >> b >> c;
+    getline( stream, a, ',' );
+    getline( stream, b, ',' );
+    getline( stream, c, ',' );
     
-    input.matrix[0][2] = a;
-    input.matrix[1][2] = b;
-    input.matrix[2][2] = c;
+    input.matrix[0][1] = stod( a );
+    input.matrix[1][1] = stod( b );
+    input.matrix[2][1] = stod( c );
+    
+    getline( ifs, line_data );
+    
+    stream.clear();
+    stream << line_data;
+    
+    getline( stream, a, ',' );
+    getline( stream, b, ',' );
+    getline( stream, c, ',' );
+    
+    input.matrix[0][2] = stod( a );
+    input.matrix[1][2] = stod( b );
+    input.matrix[2][2] = stod( c );
     
     getline( ifs, line_data );
     getline( ifs, line_data );
@@ -58,21 +64,24 @@ void Initialise_Pt_Cloud_T2L ( Framework_Parameters const& f_p, Input& input, in
     
     while(getline( ifs, line_data ))
     {
-        int molecule_index;
-        double d;
         P3 p;
-        string atom_type;
+        string index, atom_type, x, y, z, molecule_index;
         
         stream.clear();
         stream << line_data;
         
-        stream >> a >> atom_type >> b >> c >> d >> molecule_index;
+        getline( stream, index, ',' );
+        getline( stream, atom_type, ',' );
+        getline( stream, x, ',' );
+        getline( stream, y, ',' );
+        getline( stream, z, ',' );
+        getline( stream, molecule_index, ',' );
         
-        p = P3( b, c, d );
+        p = P3( stod( x ), stod( y ), stod( z ) );
         
         Frac_To_Cart_Coords( input.matrix, p );
         
-        molecules.push_back( pair<P3, int>( p, molecule_index ) );
+        molecules.push_back( pair<P3, int>( p, stoi( molecule_index ) ) );
     }
     
     ifs.close();
