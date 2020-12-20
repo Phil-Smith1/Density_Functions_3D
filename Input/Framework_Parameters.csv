@@ -9,7 +9,7 @@ replot,0
 extract_data,1
 sample_rate,5
 densigram,0
-plot_graph,1
+plot_graph,0
 zero_density,0
 title,0
 title_str,Density_Functions
