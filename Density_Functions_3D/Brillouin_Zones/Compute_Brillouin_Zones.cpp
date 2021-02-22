@@ -9,7 +9,7 @@ void Compute_Brillouin_Zones ( Framework_Parameters const& f_p, Input const& inp
     vector<B_Poly> polys;
     polys.reserve( 3000 );
     
-    Dividing_Space( cloud, base_pt, input.zone_limit, polys, max_radii, f_p.use_threads );
+    Dividing_Space( cloud, base_pt, input.zone_limit, polys, max_radii, f_p.use_threads_1 );
     
     Triangulate_Zones( polys, input.zone_limit, tetras, zone_volume );
     

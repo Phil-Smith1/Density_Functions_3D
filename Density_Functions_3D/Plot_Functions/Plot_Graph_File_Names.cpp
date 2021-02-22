@@ -65,8 +65,17 @@ void Plot_Graph_File_Names ( Framework_Parameters const& f_p, Input const& input
     
     else if (f_p.T2L)
     {
-        data_file_1 = "Data/T2L/T2L_Centres_0" + input.T2L_label + ".csv";
-        graph_file = "Graphs/T2L/T2L_Centres_0" + input.T2L_label + ".pdf";
+        if (f_p.type_of_experiment == "Molecule_Centres")
+        {
+            data_file_1 = f_p.output_dir + "Data/T2L/T2L_Centres_0" + input.T2L_label + ".csv";
+            graph_file = "Graphs/T2L/T2L_Centres_0" + input.T2L_label + ".pdf";
+        }
+        
+        else if (f_p.type_of_experiment == "Centres_Plus_Ox")
+        {
+            data_file_1 = f_p.output_dir + "Data/T2L_CO/T2L_CO_0" + input.T2L_label + ".csv";
+            graph_file = "Graphs/T2L_CO/T2L_CO_0" + input.T2L_label + ".pdf";
+        }
     }
     
     else if (input.FCC)

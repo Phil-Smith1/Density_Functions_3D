@@ -6,10 +6,7 @@
 #include "Read_Input.h"
 #include "Initialise_Lattice.h"
 #include "Read_V.h"
-#include "Add_Random_Pts.h"
-#include "Initialise_Pt_Cloud.h"
-#include "Brillouin_Algorithm.h"
-#include "Plot_Graph.h"
+#include "Threads.h"
 #include "Write_Experiment_Data.h"
 #include "Plot_Experiments.h"
 #include "Print_Info.h"
@@ -81,6 +78,9 @@ int main( int, char*[] )
                     input.k_iter = k_iter;
                     input.zone_limit = input.perim = e.k[k_iter];
                     
+                    vector<thread> thr;
+                    thr.reserve( 2 );
+                    
                     for (int rep_iter = f_p.T2_start_index; rep_iter < e.repetitions + f_p.T2_start_index; ++rep_iter) // Repeating e.repetitions times.
                     {
                         cout << "Repetition " << rep_iter << ":" << endl << endl;
@@ -88,13 +88,29 @@ int main( int, char*[] )
                         input.rep_iter = rep_iter;
                         if (f_p.T2L) input.T2L_label = T2L_labels[rep_iter - 1];
                         
-                        Add_Random_Pts( input ); // Adding input.random_pts number of random points.
+                        if (f_p.use_threads_2)
+                        {
+                            thr.push_back( thread( Threads, f_p, input, rep_iter, e_d ) );
+                        }
                         
-                        Initialise_Pt_Cloud( f_p, input, rep_iter, f_p.uplusv ); // Producing the vector of base points in Cartesian coordinates.
+                        else
+                        {
+                            Add_Random_Pts( input ); // Adding input.random_pts number of random points.
                         
-                        if (!f_p.replot) Brillouin_Algorithm( f_p, input, e_d ); // Main computations occur here.
-                        
-                        if (f_p.plot_graph) Plot_Graph( f_p, input ); // Plotting the graph.
+                            Initialise_Pt_Cloud( f_p, input, rep_iter, f_p.uplusv ); // Producing the vector of base points in Cartesian coordinates.
+                            
+                            if (!f_p.replot) Brillouin_Algorithm( f_p, input, e_d ); // Main computations occur here.
+                            
+                            if (f_p.plot_graph) Plot_Graph( f_p, input ); // Plotting the graph.
+                        }
+                    }
+                    
+                    if (f_p.use_threads_2)
+                    {
+                        for (int rep_iter = f_p.T2_start_index; rep_iter < e.repetitions + f_p.T2_start_index; ++rep_iter) // Repeating e.repetitions times.
+                        {
+                            thr[rep_iter - 1].join();
+                        }
                     }
                 }
             }

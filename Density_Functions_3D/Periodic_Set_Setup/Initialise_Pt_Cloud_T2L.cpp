@@ -60,7 +60,7 @@ void Initialise_Pt_Cloud_T2L ( Framework_Parameters const& f_p, Input& input, in
     getline( ifs, line_data );
     getline( ifs, line_data );
     
-    vector<pair<P3, int>> molecules;
+    vector<pair<P3, pair<string, int>>> molecules;
     
     while(getline( ifs, line_data ))
     {
@@ -81,7 +81,7 @@ void Initialise_Pt_Cloud_T2L ( Framework_Parameters const& f_p, Input& input, in
         
         Frac_To_Cart_Coords( input.matrix, p );
         
-        molecules.push_back( pair<P3, int>( p, stoi( molecule_index ) ) );
+        molecules.push_back( pair<P3, pair<string, int>>( p, pair<string, int>( atom_type, stoi( molecule_index ) ) ) );
     }
     
     ifs.close();
@@ -94,7 +94,7 @@ void Initialise_Pt_Cloud_T2L ( Framework_Parameters const& f_p, Input& input, in
         
         for (int counter_2 = 0; counter_2 < molecules.size(); ++counter_2)
         {
-            if (molecules[counter_2].second == counter_1)
+            if (molecules[counter_2].second.second == counter_1)
             {
                 p = P3( p.x() + molecules[counter_2].first.x(), p.y() + molecules[counter_2].first.y(), p.z() + molecules[counter_2].first.z() );
             }
@@ -102,7 +102,15 @@ void Initialise_Pt_Cloud_T2L ( Framework_Parameters const& f_p, Input& input, in
         
         p = P3( p.x() / (double)46, p.y() / (double)46, p.z() / (double)46 );
         
-        input.base_pts.push_back( p );
+        if (f_p.type_of_experiment == "Molecule_Centres" || f_p.type_of_experiment == "Centres_Plus_Ox") input.base_pts.push_back( p );
+    }
+    
+    if (f_p.type_of_experiment == "Centres_Plus_Ox")
+    {
+        for (int counter = 0; counter < molecules.size(); ++counter)
+        {
+            if (molecules[counter].second.first == "O") input.base_pts.push_back( molecules[counter].first );
+        }
     }
     
     P3 p1 = P3( 1, 0, 0 );

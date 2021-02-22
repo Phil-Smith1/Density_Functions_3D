@@ -2342,4 +2342,5 @@ dependencies: \
   /Users/philsmith/Documents/Work/Xcode\ Projects/Density_Functions_3D/Density_Functions_3D/Plot_Functions/Graph_Title.h \
   /Users/philsmith/Documents/Work/Xcode\ Projects/Density_Functions_3D/Density_Functions_3D/Experiments/Write_Experiment_Data.h \
   /Users/philsmith/Documents/Work/Xcode\ Projects/Density_Functions_3D/Density_Functions_3D/Plot_Functions/Plot_Experiments.h \
-  /Users/philsmith/Documents/Work/Xcode\ Projects/Density_Functions_3D/Density_Functions_3D/Write_Functions/Print_Info.h
+  /Users/philsmith/Documents/Work/Xcode\ Projects/Density_Functions_3D/Density_Functions_3D/Write_Functions/Print_Info.h \
+  /Users/philsmith/Documents/Work/Xcode\ Projects/Density_Functions_3D/Density_Functions_3D/Thread_1.h

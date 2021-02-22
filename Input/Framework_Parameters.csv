@@ -7,7 +7,7 @@ experiment_file,Experiment.csv
 v_file,v_file.csv
 replot,0
 extract_data,1
-sample_rate,5
+sample_rate,10
 densigram,0
 plot_graph,0
 zero_density,0
@@ -21,10 +21,11 @@ vary_k,0
 vary_m,0
 uplusv,0
 superimposed,0
-use_threads,0
+use_threads_1,0
+use_threads_2,1
 T2,0
 T2L,1
-type_of_experiment,Molecule_Centres
+type_of_experiment,Centres_Plus_Ox
 experimental_T2,0
 experimental_T2_label,e
 T2_start_index,1

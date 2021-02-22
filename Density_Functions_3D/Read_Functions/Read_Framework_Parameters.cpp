@@ -255,7 +255,17 @@ bool Read_Framework_Parameters ( Framework_Parameters& f_p )
     getline( stream, val, ',' );
     getline( stream, val, ',' );
     
-    f_p.use_threads = stoi( val );
+    f_p.use_threads_1 = stoi( val );
+    
+    getline( ifs, line_data );
+    
+    stream.clear();
+    stream << line_data;
+    
+    getline( stream, val, ',' );
+    getline( stream, val, ',' );
+    
+    f_p.use_threads_2 = stoi( val );
     
     getline( ifs, line_data );
     
