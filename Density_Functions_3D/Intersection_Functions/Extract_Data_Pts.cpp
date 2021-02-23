@@ -39,7 +39,7 @@ void Extract_Data_Pts ( Framework_Parameters const& f_p, Input& input, P3 const&
         }
     }
     
-    if (f_p.use_threads)
+    if (f_p.use_threads_1)
     {
         vector<thread> thr;
         
