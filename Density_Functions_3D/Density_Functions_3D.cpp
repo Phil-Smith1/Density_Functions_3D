@@ -78,23 +78,42 @@ int main( int, char*[] )
                     input.k_iter = k_iter;
                     input.zone_limit = input.perim = e.k[k_iter];
                     
-                    vector<thread> thr;
-                    thr.reserve( 2 );
-                    
                     for (int rep_iter = f_p.T2_start_index; rep_iter < e.repetitions + f_p.T2_start_index; ++rep_iter) // Repeating e.repetitions times.
                     {
-                        cout << "Repetition " << rep_iter << ":" << endl << endl;
-                        
-                        input.rep_iter = rep_iter;
-                        if (f_p.T2L) input.T2L_label = T2L_labels[rep_iter - 1];
-                        
                         if (f_p.use_threads_2)
                         {
-                            thr.push_back( thread( Threads, f_p, input, rep_iter, e_d ) );
+                            vector<thread> thr;
+                            thr.reserve( f_p.num_threads );
+                            
+                            for (int thread_iter = 0; thread_iter < f_p.num_threads; ++thread_iter)
+                            {
+                                if (rep_iter == e.repetitions + f_p.T2_start_index) break;
+                                
+                                cout << "Repetition " << rep_iter << ":" << endl << endl;
+                                
+                                input.rep_iter = rep_iter;
+                                if (f_p.T2L) input.T2L_label = T2L_labels[rep_iter - 1];
+                                
+                                thr.push_back( thread( Threads, f_p, input, rep_iter, e_d ) );
+                                
+                                ++rep_iter;
+                            }
+                            
+                            for (int thread_iter = 0; thread_iter < thr.size(); ++thread_iter)
+                            {
+                                thr[thread_iter].join();
+                            }
+                            
+                            --rep_iter;
                         }
-                        
+                            
                         else
                         {
+                            cout << "Repetition " << rep_iter << ":" << endl << endl;
+                            
+                            input.rep_iter = rep_iter;
+                            if (f_p.T2L) input.T2L_label = T2L_labels[rep_iter - 1];
+                            
                             Add_Random_Pts( input ); // Adding input.random_pts number of random points.
                         
                             Initialise_Pt_Cloud( f_p, input, rep_iter, f_p.uplusv ); // Producing the vector of base points in Cartesian coordinates.
@@ -102,14 +121,6 @@ int main( int, char*[] )
                             if (!f_p.replot) Brillouin_Algorithm( f_p, input, e_d ); // Main computations occur here.
                             
                             if (f_p.plot_graph) Plot_Graph( f_p, input ); // Plotting the graph.
-                        }
-                    }
-                    
-                    if (f_p.use_threads_2)
-                    {
-                        for (int rep_iter = f_p.T2_start_index; rep_iter < e.repetitions + f_p.T2_start_index; ++rep_iter) // Repeating e.repetitions times.
-                        {
-                            thr[rep_iter - 1].join();
                         }
                     }
                 }

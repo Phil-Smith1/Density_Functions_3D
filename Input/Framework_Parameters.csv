@@ -23,6 +23,7 @@ uplusv,0
 superimposed,0
 use_threads_1,0
 use_threads_2,1
+num_threads,5
 T2,0
 T2L,1
 type_of_experiment,Centres_Plus_Ox
