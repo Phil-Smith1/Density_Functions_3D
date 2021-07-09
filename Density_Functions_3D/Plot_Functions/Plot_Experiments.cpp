@@ -8,10 +8,10 @@ void Plot_Experiment ( Framework_Parameters const& f_p, string const& file_name,
     double terminal_size_y = 3.5;
     
     double border = 3;
-    double bmargin = 4;
-    double lmargin = 12;
+    double bmargin = 5;
+    double lmargin = 13;
     double tmargin = 2;
-    double rmargin = 2;
+    double rmargin = 3;
     
     string data_file = "Experiments/Data/" + file_name + ".txt";
     string graph_file = "Experiments/Graphs/" + file_name + ".pdf";
@@ -29,15 +29,15 @@ void Plot_Experiment ( Framework_Parameters const& f_p, string const& file_name,
     gp << "set rmargin " + to_string( rmargin ) + "\n";
     gp << "set tmargin " + to_string( tmargin ) + "\n";
     
-    gp << "set ylabel '" + y_label + "' font ', 24' offset -2, 0\n";
+    gp << "set ylabel '" + y_label + "' font ', 26' offset -4, 0\n";
         
-    gp << "set xlabel 'Index k of Brillouin Zone' font ', 20' offset 0, -0.5\n";
+    gp << "set xlabel 'Order k of Voronoi Zone' font ', 26' offset 0, -1\n";
         
     gp << "set xrange [1:8]\n";
-    gp << "set xtics font ', 18'\n";
-    gp << "set ytics font ', 18'\n";
+    gp << "set xtics font ', 24'\n";
+    gp << "set ytics font ', 24'\n";
     
-    gp << "set style line 1 lc rgb '#006400' lw 3\n";
+    gp << "set style line 1 lc rgb '#0d61ec' lw 3\n";
     
     // Poly Blue 0d61ec
     // Time Dark green 006400
@@ -64,10 +64,10 @@ void Plot_Experiment_2 ( Framework_Parameters const& f_p, string const& file_nam
     double terminal_size_y = 3.5;
     
     double border = 3;
-    double bmargin = 4;
-    double lmargin = 11;
+    double bmargin = 5;
+    double lmargin = 13;
     double tmargin = 2;
-    double rmargin = 2;
+    double rmargin = 3;
     
     string data_file = "Experiments/Data/" + file_name + ".txt";
     string graph_file = "Experiments/Graphs/" + file_name + ".pdf";
@@ -85,15 +85,15 @@ void Plot_Experiment_2 ( Framework_Parameters const& f_p, string const& file_nam
     gp << "set rmargin " + to_string( rmargin ) + "\n";
     gp << "set tmargin " + to_string( tmargin ) + "\n";
     
-    gp << "set ylabel '" + y_label + "' font ', 24' offset -2, 0\n";
+    gp << "set ylabel '" + y_label + "' font ', 26' offset -4, 0\n";
         
-    gp << "set xlabel 'Number m of Motif Points' font ', 20' offset 0, -0.5\n";
+    gp << "set xlabel 'Number m of Motif Points' font ', 26' offset 0, -1\n";
         
     gp << "set xrange [1:10]\n";
-    gp << "set xtics font ', 18'\n";
-    gp << "set ytics font ', 18'\n";
+    gp << "set xtics font ', 24'\n";
+    gp << "set ytics font ', 24'\n";
     
-    gp << "set style line 1 lc rgb '#ff0000' lw 3\n";
+    gp << "set style line 1 lc rgb '#0d61ec' lw 3\n";
     
     // Poly Blue 0d61ec
     // Time Dark green 006400
@@ -118,7 +118,7 @@ void Plot_Experiments ( Framework_Parameters const& f_p )
 {
     if (f_p.time_vary_k) Plot_Experiment( f_p, "Runtime", "Runtime (s)" );
     
-    if (f_p.time_vary_m) Plot_Experiment_2( f_p, "Runtime", "Runtime (ms)" );
+    if (f_p.time_vary_m) Plot_Experiment_2( f_p, "Runtime", "Runtime (s)" );
     
     if (f_p.vary_k)
     {

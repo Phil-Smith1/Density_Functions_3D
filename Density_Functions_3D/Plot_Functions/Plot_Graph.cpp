@@ -10,10 +10,10 @@ void Plot_Graph ( Framework_Parameters const& f_p, Input& input )
     double terminal_size_y = 3.5;
     
     double border = 3;
-    double bmargin = 4.5;
-    double lmargin = 11;
-    double tmargin = 3;
-    double rmargin = 2;
+    double bmargin = 5.5;
+    double lmargin = 13;
+    double tmargin = 5;
+    double rmargin = 3;
     
     double yrange = 1.0001;
     
@@ -31,7 +31,7 @@ void Plot_Graph ( Framework_Parameters const& f_p, Input& input )
     
     gp << "set terminal pdfcairo size " + to_string( terminal_size_x ) + ", " + to_string( terminal_size_y ) + "\n";
     
-    gp << "set datafile separator ','\n";
+    //gp << "set datafile separator ','\n";
     
     gp << "set border " + to_string( border ) + "\n";
     gp << "set grid\n";
@@ -46,7 +46,7 @@ void Plot_Graph ( Framework_Parameters const& f_p, Input& input )
         Graph_Title( f_p, input, input.rep_iter, title_str );
         
         gp << "set tmargin " + to_string( tmargin + 2 ) + "\n";
-        gp << "set title '" << title_str << "' font ', 24' offset 0, 1.2\n";
+        gp << "set title '" << title_str << "' font ', 24' tc rgb 'white' offset 0, 1.2\n";
     }
     
     else gp << "set tmargin " + to_string( tmargin ) + "\n";
@@ -54,7 +54,7 @@ void Plot_Graph ( Framework_Parameters const& f_p, Input& input )
     if (!f_p.densigram)
     {
         if (!f_p.superimposed ) gp << "set ylabel '{/Symbol y}@_k^A(t)' font ', 24' offset -1.2, 0\n";
-        else gp << "set ylabel '{/Symbol y}_k(t)' font ', 24' offset -1.2, 0\n";
+        else gp << "set ylabel '{/Symbol y}_k(t)' font ', 24' tc rgb 'white' offset -1.2, 0\n";
     }
     
     else
@@ -63,15 +63,15 @@ void Plot_Graph ( Framework_Parameters const& f_p, Input& input )
         else gp << "set ylabel '{/Symbol S}@_1^n{/Symbol y}_k(t)' font ', 20' offset -0.5, 0\n";
     }
     
-    if (f_p.T2) gp << "set xlabel 'Radius of Balls (Angstroms)' font ', 24' offset 0, -0.4\n";
+    if (f_p.T2) gp << "set xlabel 'Radius of Balls (Angstroms)' font ', 24' tc rgb 'white' offset 0, -0.4\n";
     else gp << "set xlabel 'Radius of Balls' font ', 20' offset 0, -0.4\n";
     
     gp << "set xrange [0: " << input.max_radius << "]\n";
     gp << "set yrange [0: " << to_string( yrange ) << "]\n";
-    gp << "set xtics font ', 22'\n";
-    gp << "set ytics font ', 22'\n";
+    gp << "set xtics font ', 24'\n";
+    gp << "set ytics font ', 24'\n";
     
-    gp << "set key horizontal at graph 0.5, graph 1.04 center bottom font ', 17'\n";
+    gp << "set key horizontal at graph 0.5, graph 1.06 center bottom font ', 17' tc rgb 'white'\n";
     
     if (!f_p.densigram)
     {
